@@ -24,7 +24,6 @@ public class Combinations {
     }
 
    
-
     public int getNumberElements() {
         return numberElements;
     }
@@ -41,7 +40,7 @@ public class Combinations {
         this.numberGroups = numberGroups;
     }
     
-    public int calcFactorial(int number){
+    int calcFactorial(int number ){
         int fact = 1;
         
         while( number >= 1 ){

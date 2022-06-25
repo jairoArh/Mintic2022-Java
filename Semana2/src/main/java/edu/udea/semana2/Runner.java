@@ -30,6 +30,8 @@ public class Runner {
         System.out.printf("Elementos=%d Grupos=%d Combinaciones=%d\n",comb1.getNumberElements(), comb1.getNumberGroups(),comb1.calcCombinations());
         
         System.out.println(comb);
+        
+        
     }
     
 }

@@ -15,6 +15,9 @@ public class Semana2 {
 
     public static void main(String[] args) {
         
+      
+        
+            
         int n = Integer.parseInt(JOptionPane.showInputDialog("Numero de Elementos"));
         
         int k = Integer.parseInt(JOptionPane.showInputDialog("Elementos para Agrupar"));
