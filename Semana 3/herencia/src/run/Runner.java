@@ -8,20 +8,21 @@ public class Runner {
         Acuatico delfin = new Acuatico("Flipper", "Rosado", (byte) 2, false, "De agua salada o dulce");
         Ave loro = new Ave("Roberto", "Verde", (byte) 2, true);
 
+        Humano lola = new Humano("Dolores Perez");
+
         System.out.println("Terrestre " + gatico.mamar());
         System.out.println("Acuatico " + delfin.mamar());
 
-        printAnimal(gatico);
-        printAnimal(delfin);
-        printAnimal(loro);
-
-        System.out.println(gatico);
-
+        printSer(gatico);
+        printSer(delfin);
+        printSer(loro);
+        printSer(lola);
 
     }
 
-    static void printAnimal(Animal animal) {
-
+    static void printSer(AccionesSeresVivos ser ) {
+        System.out.println( ser.toString());
+        System.out.printf("Respirar=%s\nDesplazar=%s\nHablar=%s\n\n",ser.respirar(),ser.desplazar(),ser.hablar());
 
     }
 
