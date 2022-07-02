@@ -1,6 +1,6 @@
 package logic;
 
-public abstract class Animal {
+public abstract class Animal implements AccionesSeresVivos{
     protected String nombre;
     protected String color;
     protected byte numeroExtremidades;
@@ -36,11 +36,9 @@ public abstract class Animal {
     }
 
     public String hablar(){
-        return "Los Animales no Hablan";
+        return "Los Animales no hablan";
     }
-    public abstract  String respirar();
 
-    public abstract String desplazar();
 
     @Override
     public String toString() {
