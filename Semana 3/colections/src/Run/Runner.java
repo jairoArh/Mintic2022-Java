@@ -3,6 +3,8 @@ package Run;
 import model.Dish;
 import model.Generic;
 import model.Management;
+import model.Ser;
+
 
 import java.util.*;
 
@@ -10,7 +12,7 @@ public class Runner {
     private Management<Dish> mngDish;
 
     public Runner() {
-        mngDish = new Management<>();
+        mngDish = new Management<>( (o1, o2)->o1.getIdDish().compareTo(o2.getIdDish()));
     }
 
     public static void main(String[] args) {
@@ -125,10 +127,14 @@ public class Runner {
      */
 
     private void handling() {
-        ArrayList<Dish> ds = mngDish.getObjects();
-        System.out.println( mngDish.getObjects());
-        ds.add( new Dish("999","Perro Caliente",false,300,12_000));
-        System.out.println( mngDish.getObjects());
-        System.out.println(ds);
+       Ser ser = new Ser("Lola");
+
+        Ser.Organ corazon = ser.new Organ("Corazon","Latir, dar vida");
+        Ser.Organ cerebo = ser.new Organ("Cerebro","Pensar, a veces");
+
+        ser.addOrgan( corazon );
+        ser.addOrgan( cerebo );
+
+        System.out.println( ser );
     }
 }
