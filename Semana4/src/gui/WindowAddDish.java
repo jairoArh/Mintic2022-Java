@@ -21,6 +21,7 @@ public class WindowAddDish extends JInternalFrame {
     private JButton deleteDish;
     private JButton findDish;
     private JButton updateDish;
+    private JButton btnSort;
 
     private JTable table;
     private DefaultTableModel dtm;
@@ -45,8 +46,6 @@ public class WindowAddDish extends JInternalFrame {
         //this.pack();
 
         desktopPane.add( this );
-
-
     }
 
     private void addComponents() {
@@ -58,15 +57,15 @@ public class WindowAddDish extends JInternalFrame {
         gbc.gridy = 0;
         gbc.gridwidth = 5;
         add( title,gbc);
-        gbc.gridwidth = 1;
-        gbc.anchor = GridBagConstraints.NORTH;
 
         //Agregar Etiqueta del Id del Plato
         gbc.gridy = 1;
+        gbc.gridx = 2;
+        gbc.gridwidth = 1;
         add( new JLabel("ID del Plato"),gbc );
 
         //Agregar cuadro de texto para Id del Plato
-        gbc.gridx = 1;
+        gbc.gridx = 3;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.weightx = 1.0;
         add( txtId, gbc );
@@ -74,6 +73,7 @@ public class WindowAddDish extends JInternalFrame {
         gbc.fill = GridBagConstraints.NONE;
 
         //Agregar Etiqueta del Nombre del Plato
+        gbc.anchor = GridBagConstraints.WEST;
         gbc.gridx = 0;
         gbc.gridy = 2;
         add( new JLabel("Nombre del Plato"),gbc);
@@ -91,6 +91,7 @@ public class WindowAddDish extends JInternalFrame {
         add( txtname,gbc );
         gbc.fill = GridBagConstraints.NONE;
         gbc.weightx = 0.0;
+        gbc.gridwidth = 1;
 
         //Agregar cuadro de Botones de Radio
         JPanel panel = new JPanel();
@@ -103,7 +104,6 @@ public class WindowAddDish extends JInternalFrame {
         //Agregar Etiqueta de es Calorias
         gbc.gridx = 0;
         gbc.gridy = 4;
-
         add( new JLabel("Calorias"),gbc );
 
 
@@ -123,7 +123,6 @@ public class WindowAddDish extends JInternalFrame {
         gbc.gridx = 2;
         gbc.gridwidth = 3;
         add( value, gbc );
-        gbc.gridwidth = 0;
         gbc.fill = GridBagConstraints.NONE;
         gbc.weightx = 0.0;
 
@@ -131,14 +130,14 @@ public class WindowAddDish extends JInternalFrame {
         gbc.gridx = 0;
         gbc.gridy = 6;
         gbc.gridwidth = 4;
-        gbc.gridheight = 4;
+        gbc.gridheight = 5;
         gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
         add( new JScrollPane( table ),gbc );
         gbc.gridwidth = 1;
         gbc.gridheight = 1;
-        gbc.fill = GridBagConstraints.NONE;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
 
@@ -156,6 +155,8 @@ public class WindowAddDish extends JInternalFrame {
         gbc.gridy = 9;
         add(updateDish,gbc);
 
+        gbc.gridy = 10;
+        add(btnSort,gbc);
 
     }
 
@@ -168,8 +169,8 @@ public class WindowAddDish extends JInternalFrame {
         txtname = new JTextField();
 
         radioNo = new JRadioButton( "Si" );
-        radioNo.setEnabled( true );
         radioYes = new JRadioButton("NO");
+        radioYes.setSelected( true );
         group = new ButtonGroup( );
         group.add( radioNo );
         group.add( radioYes );
@@ -184,13 +185,78 @@ public class WindowAddDish extends JInternalFrame {
         addDish.addActionListener( new HandlingEvents( dishWindow ) );
 
         deleteDish = new JButton("Borrar");
+        deleteDish.setActionCommand( HandlingEvents.DELETE_DISH );
+        deleteDish.addActionListener( new HandlingEvents( dishWindow ) );
+
         findDish = new JButton("Buscar");
         updateDish = new JButton("Actualizar");
+
+        btnSort = new JButton("Ordenar");
+        btnSort.setActionCommand( HandlingEvents.SORT);
+        btnSort.addActionListener( new HandlingEvents( dishWindow ) );
 
         Object[] headings = {"Id Plato","Nombre","Vegetariano","Calorias","Precio"};
         dtm = new DefaultTableModel( headings, 0 );
 
         table = new JTable( dtm );
 
+    }
+
+    public String getIdDish(){
+
+        return txtId.getText();
+    }
+
+    public String getName(){
+
+        return txtname.getText();
+    }
+
+    public boolean isVegetarian(){
+
+        return radioYes.isSelected() ? true : false;
+
+    }
+
+    public String getCalories(){
+
+        return calories.getValue().toString();
+    }
+
+    public String getValue(){
+
+        return value.getText();
+    }
+
+    public void cleanFields(){
+        txtId.setText( "");
+        txtname.setText( "");
+        radioYes.setSelected( true );
+        calories.setValue(100);
+        value.setText("");
+    }
+
+    public void addRowTable(Object[] row){
+        dtm.addRow( row );
+    }
+
+    public void changeDataTable(String[][] data){
+
+        System.out.println( "Filas " + data.length);
+
+        for( int i = 0 ; i < dtm.getRowCount() ; i++ ){
+            dtm.removeRow( 0 );
+        }
+
+        for( int i = 0 ; i < data.length ; i++ ){
+            String id = data[i][0];
+            String name = data[i][1];
+            String vegetarian = data[i][2];
+            String calories = data[i][3];
+            String value = data[i][4];
+
+            addRowTable( new Object[]{id,name,vegetarian,calories,value});
+
+        }
     }
 }

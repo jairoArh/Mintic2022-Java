@@ -73,7 +73,39 @@ En la semana 3, ahondaremos un poco más en la programación orientada a objetos
 
 ## Semana Cuatro - Interfaces gráficas en Java (Swing)
 
+En la semana 4, aprenderemos a construir interfaces gráficas de usuario básicas. Es decir, podremos construir aplicaciones más fáciles de manejar por parte del usuario, usando componentes a los cuales todos estamos acostumbrados, al contrario de la línea de comandos. Las interfaces gráficas de usuario en Java, además, son multiplataforma. Es decir, una vez creas una, la ejecuta y la ve de igual manera un usuario que use Windows, Linux o Mac, entre otros sistemas operativos. 
+
+### Objetivos de aprendizaje
+
+- Aprender los componentes básicos y los mecanismos tras la construcción de una interfaz gráfica de usuario usando el lenguaje Java.
+
+#### Sección 1 - Introducción a las Interfaces Gráficas con Swing
+
 ## Semana Cinco -  Introducción a las pruebas unitarias (JUnit), Introducción a la persistencia mediante bases de datos
+
+En la semana 5, empezaremos a conocer una práctica que es vital en la construcción de aplicaciones con altos estándares de calidad. Las pruebas, entre ellas las pruebas unitarias, son una práctica cada vez más extendida en la industria del software, que busca que los errores y bugs en las aplicaciones se encuentren antes de que lleguen al usuario final. En esta semana, aprenderemos más específicamente a automatizar pruebas unitarias, que no solo permiten controlar la calidad de ciertos aspectos de una aplicación, sino que también son la pieza clave para la evaluación automática que se realiza en el presente curso. Finalmente, conoceremos tal vez el medio de persistencia de información más común: las bases de datos y los conceptos más básicos que las rodean. 
+
+### Objetivos de aprendizaje
+
+- Comprender los conceptos detrás de la automatización de pruebas unitarias.
+- Automatizar pruebas unitarias en Java mediante el uso de JUnit.
+- Comprender los conceptos básicos ligados a la persistencia mediante bases de datos.
+
+#### Sección 1
+
+- Introducción a las pruebas unitarias
+  - Pruebas de aceptación
+  - Pruebas de Sistema
+    - Pruebas de estrés o de carga
+    - Pruebas de usabilidad
+    - Pruebas de compatibilidad 
+  - Pruebas de integración
+  - Pruebas unitarias
+- Automatización de Pruebas Unitarias usando JUnit
+
+#### Sección 2
+
+- Persistencia usando bases de datos
 
 ## Semana Seis - Diseño básico de bases de datos, Bases de datos relacionales (con SQL)
 

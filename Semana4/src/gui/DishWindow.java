@@ -4,6 +4,7 @@ import control.ControllerDish;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Arrays;
 
 public class DishWindow extends JFrame {
     private MainMenu mainMenu;
@@ -45,7 +46,19 @@ public class DishWindow extends JFrame {
 
     public void addDish(){
         //TODO Obtener los datos de GUI y enviar al control
-        System.out.println( controller.addDish());
+        String id = windowAddDish.getIdDish();
+        String name = windowAddDish.getName();
+        String vegetarian = windowAddDish.isVegetarian() ? "SI" : "NO";
+        String calories = windowAddDish.getCalories();
+        String value = windowAddDish.getValue();
+
+       if( controller.addDish( id,name,vegetarian,calories,value) ){
+           windowAddDish.addRowTable( new Object[]{id,name,vegetarian,calories,value});
+           JOptionPane.showMessageDialog(null,"Se ha Insertado el Registro","OK",JOptionPane.WARNING_MESSAGE);
+           windowAddDish.cleanFields();
+       }else{
+           JOptionPane.showMessageDialog(null,"Ya se ha registrado el ID","OK",JOptionPane.ERROR_MESSAGE);
+       }
 
     }
 
@@ -58,5 +71,21 @@ public class DishWindow extends JFrame {
         if ( option == JOptionPane.YES_OPTION ){
             System.exit( 0 );
         }
+    }
+
+    public void deleteDish(){
+        String[] object = controller.deleteDish( windowAddDish.getIdDish());
+        if( object != null ){
+            windowAddDish.changeDataTable( controller.sortDish( 0 ) );
+        }else{
+            JOptionPane.showMessageDialog(null,"Plato no Existe","Error",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void sorted(){
+        String[][] data = controller.sortDish(1 );
+
+        windowAddDish.changeDataTable( data );
+
     }
 }

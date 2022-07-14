@@ -1,8 +1,7 @@
 package Logic;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Management <T>{
     private ArrayList<T> objects;
@@ -71,5 +70,12 @@ public class Management <T>{
         }
 
         return false;
+    }
+
+    public List<T> sortObject( Comparator<T> comparator ){
+
+        return objects.stream()
+                .sorted( comparator )
+                .collect(Collectors.toList());
     }
 }

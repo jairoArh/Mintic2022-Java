@@ -11,6 +11,7 @@ public class HandlingEvents implements ActionListener, WindowListener {
     public static final String DELETE_DISH = "Eliminar Plato";
     public static final String FIND_DISH = "Buscar Plato";
     public static final String UPDATE_DISH = "Actualizar Plato";
+    public static final String SORT = "Ordenar Platos";
     public static final String VIEW_ADD_DISH = "Visualizar Ventana de Platos";
     public static  final String EXIT = "Salir";
 
@@ -27,6 +28,12 @@ public class HandlingEvents implements ActionListener, WindowListener {
             break;
 
             case VIEW_ADD_DISH: dishWindow.viewAddDish();
+            break;
+
+            case SORT: dishWindow.sorted();
+            break;
+
+            case DELETE_DISH: dishWindow.deleteDish();
             break;
 
             case EXIT: dishWindow.exit();
