@@ -36,6 +36,9 @@ public class HandlingEvents implements ActionListener, WindowListener {
             case DELETE_DISH: dishWindow.deleteDish();
             break;
 
+            case FIND_DISH: dishWindow.findDish();
+            break;
+
             case EXIT: dishWindow.exit();
             break;
         }

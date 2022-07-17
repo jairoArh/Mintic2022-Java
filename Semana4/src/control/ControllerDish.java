@@ -2,17 +2,31 @@ package control;
 
 import Logic.Dish;
 import Logic.Management;
+import persistence.FileDish;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
 public class ControllerDish {
     private Management<Dish> management;
+    private FileDish file;
 
     public ControllerDish() {
+
         management = new Management<>((d1,d2)->d1.getIdDish().compareTo(d2.getIdDish()));
+        file = new FileDish();
+        load();
     }
 
+
+    /***
+     * Método que permite agregar un nuevo plato al sistema
+     * @param data Datos que se van a agrgar (arreglo)
+     * @return verdadero o falso dependiendo del resultado de si se agrega o no (id repetido)
+     */
     public boolean addDish(String ... data ){
 
         String id = data[0];
@@ -43,6 +57,7 @@ public class ControllerDish {
         }
 
         List<Dish> list = management.sortObject( comparator );
+
         String[][] data = new String[ list.size()][5];
 
         int cont = 0;
@@ -57,6 +72,15 @@ public class ControllerDish {
         return data;
     }
 
+    public String[] findDish( String id ){
+        Dish dish = management.findObject( new Dish(id,null,false,0,0.0));
+        if( dish != null ){
+            return new String[]{dish.getIdDish(),dish.getName(),dish.isVegetarian() ? "SI" : "NO", Integer.toString( dish.getCalories()) , Double.toString(dish.getValue())};
+        }
+
+        return null;
+    }
+
     public String[] deleteDish(String id){
         if ( management.findObject( new Dish(id,null,false,0,0.0)) != null ){
             Dish dish = management.deleteObject( management.findObject(new Dish(id,null,false, 0,0.0) ) );
@@ -65,5 +89,28 @@ public class ControllerDish {
         }
 
         return null;
+    }
+
+    public void dump(){
+        try {
+            file.dump( management.getObjects());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void load(){
+        List<Dish> dishes = null;
+
+        try {
+            dishes = file.load();
+            for( Dish dish : dishes ){
+                management.addObject( dish );
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

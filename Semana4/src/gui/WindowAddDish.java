@@ -189,6 +189,9 @@ public class WindowAddDish extends JInternalFrame {
         deleteDish.addActionListener( new HandlingEvents( dishWindow ) );
 
         findDish = new JButton("Buscar");
+        findDish.setActionCommand( HandlingEvents.FIND_DISH );
+        findDish.addActionListener( new HandlingEvents( dishWindow ) );
+
         updateDish = new JButton("Actualizar");
 
         btnSort = new JButton("Ordenar");
@@ -242,9 +245,9 @@ public class WindowAddDish extends JInternalFrame {
 
     public void changeDataTable(String[][] data){
 
-        System.out.println( "Filas " + data.length);
 
-        for( int i = 0 ; i < dtm.getRowCount() ; i++ ){
+
+        while( dtm.getRowCount() > 0 ){
             dtm.removeRow( 0 );
         }
 
@@ -257,6 +260,26 @@ public class WindowAddDish extends JInternalFrame {
 
             addRowTable( new Object[]{id,name,vegetarian,calories,value});
 
+        }
+    }
+
+    public void setName( String name ){
+        txtname.setText( name );
+    }
+
+    public void setCalories(String calories ){
+        this.calories.setValue(Integer.parseInt( calories ) );
+    }
+
+    public void setValue(String value){
+        this.value.setText( value );
+    }
+
+    public void setVegetarian(String vegetarian){
+        if ( vegetarian.equals("SI")){
+            this.radioYes.setSelected( true );
+        }else{
+            this.radioYes.setSelected( false );
         }
     }
 }

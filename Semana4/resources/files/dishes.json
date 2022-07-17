@@ -1,0 +1,30 @@
+[
+  {
+    "idDish": "2342",
+    "name": "Pollo a la Cazadora",
+    "isVegetarian": false,
+    "calories": 240,
+    "value": 25000.0
+  },
+  {
+    "idDish": "7467",
+    "name": "Pasta",
+    "isVegetarian": true,
+    "calories": 80,
+    "value": 12000.0
+  },
+  {
+    "idDish": "2452",
+    "name": "Arroz con Camarones",
+    "isVegetarian": false,
+    "calories": 71,
+    "value": 50000.0
+  },
+  {
+    "idDish": "67435",
+    "name": "Pargo Rojo",
+    "isVegetarian": true,
+    "calories": 123,
+    "value": 45000.0
+  }
+]
