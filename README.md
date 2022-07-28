@@ -107,8 +107,19 @@ En la semana 5, empezaremos a conocer una práctica que es vital en la construcc
 
 - Persistencia usando bases de datos
 
-## Semana Seis - Diseño básico de bases de datos, Bases de datos relacionales (con SQL)
+## Semana Seis - Introducción a las bases de datos relacionales
 
-## Semana Siete - Conexión a bases de datos con JDBC, Introducción a Hibernate
+### Diseño básico de bases de datos
+
+### Bases de datos relacionales (con MySQL)
+
+## Semana Siete - Acceso a bases de datos relacionales desde Java
+
+### Conexión a bases de datos con JDBC
+
+- Introducción a JDBC
+- Introducción a Hibernate
+
+
 
 > Formador: Jairo Armando Riaño Herrera - jairo.armando@gmail.com
