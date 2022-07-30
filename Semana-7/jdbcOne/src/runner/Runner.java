@@ -23,15 +23,17 @@ public class Runner {
 
         dao = new DishDAO();
 
-        String name = JOptionPane.showInputDialog("Nombre del Plato");
+        /*String name = JOptionPane.showInputDialog("Nombre del Plato");
         String calories = JOptionPane.showInputDialog("Calorias");
         String isVegetarian = JOptionPane.showInputDialog("Vegetariano [T/F]?");
         String value = JOptionPane.showInputDialog("Valor");
 
         String[] data = {"0",name,calories,isVegetarian,value};
-        dao.addDish( data );
+        dao.addDish( data );*/
 
-        dao.close();
+        dao.updateDish( new String[]{"3","Pasta a la Bolognesa","340","T","34000"});
+
+        //dao.close();
 
     }
 }

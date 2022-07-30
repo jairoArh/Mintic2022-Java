@@ -82,7 +82,28 @@ public class DishDAO {
         return 0;
     }
 
+    /***
+     *
+     * @param data {"3","Pasta a la Bolognesa",300,"T",34000}
+     * @return
+     */
     public int updateDish( String ... data ){
+
+        //UPDATE dish SET name=data[1], calories=data[2], is_vegetarian=data[3], price=data[4]
+        //WHERE id = data[0]
+
+        String query = "UPDATE dish SET name='" + data[1] + "',calories='" + data[2] + "',is_vegetarian='" + data[3] + "" +
+                "',price='" + data[4] + "' WHERE id='" + data[0] + "'";
+
+        if( connectDB.setConnect( ) ){
+            try {
+                Statement statement = connectDB.getConnection().createStatement();
+
+                return statement.executeUpdate( query );
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
 
         return 0;
     }
